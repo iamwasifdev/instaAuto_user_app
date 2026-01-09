@@ -1,15 +1,43 @@
-import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import "./global.css"
+import Button from "@/components/ui/button";
+import Input from "@/components/ui/input";
 
-export default function Index() {
+import {Text, TextInputChangeEvent} from  "react-native"
+import { useState } from "react";
+import {OTPInput  } from "@/components/ui/otpNew";
+import  PhoneInput from "@/components/ui/countryPhoneNumberInput";
+
+
+
+
+ 
+export default function App() {
+
+  const [show,setShow] =useState<string>()
+
+
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+   <SafeAreaView className="h-[100%] items-center self-none justify-around  "> 
+
+
+<PhoneInput placeholder="Enter you name" size={"md"} error="" onChange={(e:TextInputChangeEvent)=>{setShow(e.nativeEvent.text)}} label="Name"/>
+
+
+  
+
+   
+   
+
+     <Input placeholder="Enter you name" size={"md"} error="asdfgh" onChange={(e:TextInputChangeEvent)=>{setShow(e.nativeEvent.text)}} label="Name"/>
+      <Text>{show}</Text>
+   
+ 
+
+   
+
+
+   </SafeAreaView>
   );
 }
