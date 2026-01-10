@@ -14,7 +14,7 @@ import  PhoneInput from "@/components/ui/countryPhoneNumberInput";
  
 export default function App() {
 
-  const [show,setShow] =useState<string>()
+  const [show,setShow] =useState<string>("")
 
 
 
@@ -22,7 +22,7 @@ export default function App() {
    <SafeAreaView className="h-[100%] items-center self-none justify-around  "> 
 
 
-<PhoneInput placeholder="Enter you name" size={"md"} error="" onChange={(e:TextInputChangeEvent)=>{setShow(e.nativeEvent.text)}} label="Name"/>
+<PhoneInput placeholder="Enter you name" size={"md"} error="" setValue={setShow} value={show} label="Name" />
 
 
   

@@ -1,14 +1,15 @@
 import { Text, TextInput, View, type TextInputProps } from 'react-native'
-import { TextInputChangeEvent } from 'react-native'
 
 
 
-interface InputType extends TextInputProps{
+
+interface InputType  extends TextInputProps{
     label:string,
     placeholder:string,
     size:"sm"|"md"|"lg",
     error:string,
-    onChange:(e:TextInputChangeEvent)=>void
+    setValue: React.Dispatch<React.SetStateAction<string>>,
+    value:string,
 
 
 }
@@ -23,7 +24,20 @@ const sizeStyle={
 
 
 
-export default function PhoneInput({size,error,onChange,label,...props}:InputType){
+export default function PhoneInput({size,error,onChange,label,value,setValue,...props}:InputType){
+
+    function onChangeHandler(text:string){
+
+    const digitsOnlyRG = /^\d*$/;
+
+     if (!digitsOnlyRG.test(text)) {
+      return;
+    }
+
+        console.log(text)
+        setValue(text)
+
+    }
 
 
     return <View className={`${sizeStyle[size]} `}>
@@ -36,7 +50,12 @@ export default function PhoneInput({size,error,onChange,label,...props}:InputTyp
                 <Text className=' text-xl '>+91</Text>
                 </View>
 
-             <TextInput {...props}   onChange={(text)=>{onChange(text)}} className={[
+             <TextInput {...props} value={value} keyboardType="number-pad" maxLength={10}   onChangeText={(text)=>{ 
+
+                
+                    
+               onChangeHandler(text)
+            }} className={[
         `border-2  rounded-md  py-4 px-12 text-lg ${error ==="" ?"border-secondry-300 ":"border-danger-400 bg-danger-100 "} `,
         " pl-15"
       ].join(" ")} />
