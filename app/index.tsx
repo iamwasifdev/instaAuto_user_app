@@ -1,7 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import "./global.css"
-import { useEffect } from "react";
-import * as SecureStore from 'expo-secure-store';
+
 
 
 

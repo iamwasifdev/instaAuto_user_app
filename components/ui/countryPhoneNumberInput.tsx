@@ -40,7 +40,7 @@ export default function PhoneInput({size,error,onChange,label,value,setValue,...
     }
 
 
-    return <View className={`${sizeStyle[size]} `}>
+    return <View className={`${sizeStyle[size]}`}>
 
         <Text className='text-lg text-secondry-600'>{label}</Text>
 

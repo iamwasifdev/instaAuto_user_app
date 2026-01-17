@@ -1,13 +1,16 @@
-import { createContext ,useEffect,useState} from 'react';
+import { createContext ,useContext,useEffect,useState} from 'react';
 import * as SecureStore from 'expo-secure-store';
-import axios from "axios"
 import { api } from '@/utils/axiosIntance';
+import { authMeEndpoint } from '@/ts';
 
-const AuthContext = createContext<any>(null);
+export const AuthContext = createContext<any>(null);
+export function useAuth(){
+    return useContext(AuthContext)
+}
 
 export function AuthProvider({children}:any){
 
-    const BACKEND_URL=""
+    const BACKEND_URL="localhost:3000"
 
     const [token,setToken]=useState<string|null>(null)
     const [loading,setLoading]=useState(true)
@@ -31,10 +34,17 @@ export function AuthProvider({children}:any){
                 
                 const req=await api<authMeEndpoint>(`${BACKEND_URL}/auth/me`)
 
-                
+                setUser(req.data)
+                setToken(token)
+
 
 
             }catch{
+            //Should check which kind of error
+                setToken(null)
+                setUser(null)
+                setLoading(false)
+                SecureStore.deleteItemAsync("auth_token")
 
             }
             
@@ -42,6 +52,28 @@ export function AuthProvider({children}:any){
         auth()
     },[])
 
+
+  async  function login(token:string){
+        await SecureStore.setItemAsync("auth_token",token)
+        setToken(token)
+
+    }
+
+    async  function logout(){
+        await SecureStore.deleteItemAsync("auth_token")
+        setToken(null)
+
+    }
+
+   
+
+
+    
+
+
+    return <AuthContext.Provider value={{token,loading,user,login,logout}}>
+        {children}
+    </AuthContext.Provider>
 
 
 
