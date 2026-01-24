@@ -2,6 +2,7 @@ import { createContext ,useContext,useEffect,useState} from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { api } from '@/utils/axiosIntance';
 import { authMeEndpoint } from '@/ts';
+import { isAxiosError } from 'axios';
 
 export const AuthContext = createContext<any>(null);
 export function useAuth(){
@@ -10,8 +11,7 @@ export function useAuth(){
 
 export function AuthProvider({children}:any){
 
-    const BACKEND_URL="localhost:3000"
-
+    
     const [token,setToken]=useState<string|null>(null)
     const [loading,setLoading]=useState(true)
     const [user,setUser]=useState<authMeEndpoint|null>(null)
@@ -28,18 +28,27 @@ export function AuthProvider({children}:any){
 
                 setToken(null)
                 setLoading(false)
+                return;
+                
             }
 
             try{
                 
-                const req=await api<authMeEndpoint>(`${BACKEND_URL}/auth/me`)
+                const req=await api<authMeEndpoint>(`/auth/me`)
 
                 setUser(req.data)
                 setToken(token)
 
 
 
-            }catch{
+            }catch(err){
+
+               
+                if(isAxiosError(err)){
+
+                     console.log(err.response)
+
+                }
             //Should check which kind of error
                 setToken(null)
                 setUser(null)
@@ -65,13 +74,19 @@ export function AuthProvider({children}:any){
 
     }
 
+    function setProfile(profile:authMeEndpoint) {
+
+        setUser(profile)
+        
+    }
+
    
 
 
     
 
 
-    return <AuthContext.Provider value={{token,loading,user,login,logout}}>
+    return <AuthContext.Provider value={{token,loading,user,login,logout,setProfile}}>
         {children}
     </AuthContext.Provider>
 

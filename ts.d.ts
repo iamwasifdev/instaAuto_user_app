@@ -1,5 +1,7 @@
 
 
+
+
 export type authMeEndpoint={
     name:string,
     number:string,
@@ -15,4 +17,12 @@ export type otpSendSuccess={
 export type otpSendError={
     success:boolean
     error:string|any
+}
+
+
+export type otpVerifySuccess={
+    success:boolean,
+    newUser:boolean,
+    token:string,
+    userData?:authMeEndpoint
 }
