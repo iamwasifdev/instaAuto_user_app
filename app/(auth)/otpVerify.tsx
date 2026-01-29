@@ -155,6 +155,8 @@ export default function OtpVerify() {
 
     onSuccess:(data)=>{
 
+        console.log(data)
+
 
         if(!data.newUser){
 

@@ -40,7 +40,14 @@
           }
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow instaAuto to use your location for finding nearby rides."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

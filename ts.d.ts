@@ -4,7 +4,7 @@
 
 export type authMeEndpoint={
     name:string,
-    number:string,
+    phoneNumber:string,
     countryCode:string,
 }
 
@@ -26,3 +26,27 @@ export type otpVerifySuccess={
     token:string,
     userData?:authMeEndpoint
 }
+
+
+export type sendUserCredentialsType ={
+    token:string,
+    name:string,
+    phoneNumber:string,
+    countryCode:string,
+    
+}
+
+
+export type driverMarker={
+    type:"driver",
+    driverId:ObjectId,
+    autoNumber:string,
+    name:string,
+    lng:number,
+    lat:number,
+    heading:number,
+    routerId:ObjectId
+}
+
+export type  MarkerType=DriverType
+

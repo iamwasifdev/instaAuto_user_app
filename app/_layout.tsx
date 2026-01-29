@@ -52,6 +52,8 @@ function MainLayout() {
     {/* Authicated Routes */}
     <Stack.Protected guard={token} >
 
+      <Stack.Screen name="(user)" options={{headerShown:false}} />
+
     </Stack.Protected >
 
      {/* Login/Signup Routes */}

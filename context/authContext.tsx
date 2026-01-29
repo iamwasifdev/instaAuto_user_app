@@ -23,6 +23,7 @@ export function AuthProvider({children}:any){
         async function auth() {
 
             const token = await SecureStore.getItemAsync("auth_token")
+            console.log(token)
 
             if(!token){
 
@@ -34,11 +35,15 @@ export function AuthProvider({children}:any){
 
             try{
                 
-                const req=await api<authMeEndpoint>(`/auth/me`)
+                const req=await api<authMeEndpoint>(`/auth/me`,{
+                    headers:{
+                        "Authorization":`Bearer ${token}`
+                    }
+                })
 
                 setUser(req.data)
                 setToken(token)
-
+                setLoading(false)
 
 
             }catch(err){
