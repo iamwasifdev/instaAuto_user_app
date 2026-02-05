@@ -8,7 +8,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import MapView from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ErrorBox from "@/components/ui/errorBox";
-
+import { Heart, User, Menu, Search, MapPin } from 'lucide-react-native';
 
 
 import { Text, View } from "react-native";
@@ -103,6 +103,8 @@ console.log("Route: ",route)
           {/* this about a new way to do this */}
            <ErrorBox text={[error,routeError].join(error && routeError?"\n":"")}/>
         </View>
+        
+        
         <Map
         ref={MapRef}
         markers={filteredDrivers}
