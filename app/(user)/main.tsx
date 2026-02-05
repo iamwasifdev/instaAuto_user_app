@@ -50,7 +50,7 @@ console.log("Route: ",route)
   return (
     <SafeAreaView className="h-full  flex-1">
       <View className="h-full w-full relative">
-        <View className="absolute z-50 top-0 right-0 left-0 justify-center items-center  ">
+        <View className="absolute z-50 bottom-0 right-0 left-0 justify-center items-center  ">
           {/* this about a new way to do this */}
            <ErrorBox text={[error,routeError].join(error && routeError?"\n":"")}/>
         </View>
@@ -64,6 +64,8 @@ console.log("Route: ",route)
         }}
         rotateEnabled={false}
         route={route}
+        //remember android only
+        onDoublePress={()=>{setDriverId(null)}}
       />
 
       </View>
