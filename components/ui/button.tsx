@@ -45,7 +45,7 @@ export default function Button({
 
 }:CustomButtonProps){
 
-  return  <Pressable {...props}  accessibilityLabel={"Fuck you"} onPress={onClick} disabled={disabled} className={[
+    return  <Pressable {...props}  accessibilityLabel={"Fuck you"} onPress={onClick} disabled={disabled} className={[
     "    py-4 rounded-md  max-w-50 items-center justify-center  ",
     `${disabled &&"opacity-50"}`,
     sizeStyles[size],

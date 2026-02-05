@@ -44,16 +44,9 @@ export default function PhoneNumber() {
 
         if(isFlattenError(error)){
 
-         
-
-
         const recordError=flattenErrorCustom(error)
 
         
-
-
-
-     console.log(recordError)
 
 
         const finalError=objStr(recordError)

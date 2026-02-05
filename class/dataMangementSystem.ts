@@ -2,30 +2,40 @@
 
 
 export class dataMangementSystem<T extends Record<string,any> >{
-    state: T[];  // ← ADD THIS! Declare the property
+   
     setState: React.Dispatch<React.SetStateAction<T[]>>;  // ← ADD THIS too!
     idName:keyof T   
-    constructor(state:T[],setState:React.Dispatch<React.SetStateAction<T[]>>,idName:keyof T) {
-       this.state=state
+    constructor(setState:React.Dispatch<React.SetStateAction<T[]>>,idName:keyof T) {
        this.setState=setState
        this.idName=idName
   }
 
-  updataData(data:T){
+ async updataData(data:T){
     let updated=false
 
-    const newState=this.state.map((stateData)=>{
+  await new Promise((resolve)=>{
+     this.setState(currentState=>{
+        const newState=  currentState.map((stateData)=>{
+          console.log(stateData)
         if(stateData[this.idName]===data[this.idName] ){
            updated=true
-           return data
+          
+           return  data
+           
         }
 
         return stateData
     })
-    if(updated){
-        this.setState(newState)
-    }
-    return updated
+
+
+    resolve(updated)
+    return newState
+
+        })
+   })
+
+   return updated
+    
 
   }
   addData(data:T){
@@ -37,18 +47,21 @@ export class dataMangementSystem<T extends Record<string,any> >{
   }
   deleteData(data:T){
 
-    const newState=this.state.filter((stateData)=>{
+  
+    this.setState(currentState=>{
+
+     return currentState.filter((stateData)=>{
         return stateData[this.idName] !== data[this.idName]
     })
 
-    this.setState(newState)
+    })
 
   }
 
-  Allow(data:T,id:string|false,arr:string[]){
+  Allow(data:T,id:string,arr:string[]|undefined){
     let allowed=false
 
-    if(!id){
+    if(!arr){
         allowed=true
         return allowed;
     }

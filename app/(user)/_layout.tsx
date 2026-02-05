@@ -1,12 +1,16 @@
 
 import { Tabs } from "expo-router";
 import GeoLocationProvider, { useGeoLocation } from "@/context/geoLocationContext";
+import { DataContextProvider } from "@/context/dataContext";
+
 
 export default function TabRootLayout() {
 
 
      return   <GeoLocationProvider>
+          <DataContextProvider>
             <TabLayout/>
+            </DataContextProvider>
         </GeoLocationProvider>
 
 
