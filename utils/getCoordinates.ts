@@ -1,9 +1,13 @@
 import { routeType,lngLatType } from "@/ts";
 
-
+export type extractedStopType={
+  latitude:number,
+  longitude:number,
+  name:string
+}
 
 export default function getCoordinates(route:routeType){
-    let stopsGiven:Record<string,number|string>[]=[]
+    let stopsGiven:extractedStopType[]=[]
     let coordinates:lngLatType[]=[]
 
     console.log("stop:",route.stops)

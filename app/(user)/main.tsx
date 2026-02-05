@@ -1,19 +1,18 @@
 import WebSocketService from "@/class/WebSocketService";
 import Map from "@/components/ui/Map";
 import { useAuth } from "@/context/authContext";
-import { driveMovedType, joinGrid, MarkerType } from "@/ts";
+
 import getLocation from "@/utils/getLocation";
-import * as Location from "expo-location";
-import { useEffect, useMemo, useRef, useState } from "react";
+
+import { useEffect,  useRef, } from "react";
 import MapView from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ErrorBox from "@/components/ui/errorBox";
-import { Heart, User, Menu, Search, MapPin } from 'lucide-react-native';
 
 
-import { Text, View } from "react-native";
-import useDriverMoved from "@/hooks/webSocket";
-import { LocationObject } from "expo-location";
+
+import {  View } from "react-native";
+
 import { useGeoLocation } from "@/context/geoLocationContext";
 import { useDataContext } from "@/context/dataContext";
 import useDriverMarkerOnClick from "@/hooks/useDriverMarkerOnClick";
@@ -44,54 +43,6 @@ const {route,error:routeError,setDriverId}=useDriverMarkerOnClick(filteredDriver
       );
   
   }, []);
-
-
-//   useEffect(() => {
-    
-
-//     async function Send() {
-//       const socket =io("ws://192.168.29.251:5000")
-//       socket.emit("join_grid",{
-//     lng:74.8181119,
-//     lat:34.1184729,
-//     id:"jyfghudhuhfu",
-//     type:"user"
-// })
-//       socket.on("driver_moved",(data)=>{
-//         console.log("driver moved from the the io in the component",data)
-//       })
-//       await  WebSocketService.connect();
-//       const userLocation = await Location.getCurrentPositionAsync();
-//    await   WebSocketService.retryEmit<joinGrid>({
-//         eventName: "join_grid",
-//         data: {
-//           lng: userLocation.coords.longitude,
-//           lat: userLocation.coords.latitude,
-//           id:user.id,
-//           type:"user"
-
-//         },
-//       },{
-//         key:"success",
-//         value:true
-
-//       },5,()=>{setFailure("Something went wrong.Please reopen the app")},(res)=>{console.log("joined the grid ")});
-
-//       WebSocketService.on<string>("driver_moved",(data)=>{
-//         console.log("data :",data)
-//       })
-
-//       WebSocketService.default()
-
-       
-//     }
-//     Send()
-
-//     return ()=>{
-//       WebSocketService.closeAll()
-//     }
-//   }, []);
-
 
 
 console.log("Route: ",route)
