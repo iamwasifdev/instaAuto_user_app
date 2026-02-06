@@ -36,13 +36,7 @@ export default function IconInput({size,error,onChange,label,value,className,set
 
     function onChangeHandler(text:string){
 
-    const digitsOnlyRG = /^\d*$/;
-
-     if (!digitsOnlyRG.test(text)) {
-      return;
-    }
-
-        console.log(text)
+   
         setValue(text)
 
     }
@@ -68,7 +62,7 @@ export default function IconInput({size,error,onChange,label,value,className,set
                onChangeHandler(text)
             }} className={[
         `border-2  rounded-md  py-4 px-12 text-lg ${error ==="" ?"border-secondry-300 ":"border-danger-400 bg-danger-100 "} `,
-        " pl-13",
+        " pl-9",
         `${className}`
 
       ].join(" ")} />

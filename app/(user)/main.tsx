@@ -71,6 +71,7 @@ console.log("Route: ",route)
         
         
         <Map
+        zoomTapEnabled={false}
         ref={MapRef}
         markers={filteredDrivers}
         onMarkerClick={(driverId) => {setDriverId(driverId) 
