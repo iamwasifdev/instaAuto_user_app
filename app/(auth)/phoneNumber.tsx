@@ -108,6 +108,8 @@ export default function PhoneNumber() {
         setValue={setNumber}
         value={number}
         displayText="+91"
+        keyboardType="number-pad"
+        maxLength={10}
       />
       
 

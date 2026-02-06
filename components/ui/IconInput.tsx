@@ -13,6 +13,7 @@ interface InputType  extends TextInputProps{
     value:string,
     DisplayIcon?:LucideIcon//The D is capital because if we do not write this than the react will  not know that it is a component okdoki.
     displayText?:string
+    className?:string
 
 
 }
@@ -27,7 +28,7 @@ const sizeStyle={
 
 
 
-export default function IconInput({size,error,onChange,label,value,setValue,displayText,DisplayIcon,...props}:InputType){
+export default function IconInput({size,error,onChange,label,value,className,setValue,displayText,DisplayIcon,...props}:InputType){
 
       if (displayText && DisplayIcon) {
     console.warn('IconInput: Cannot use both displayText and DisplayIcon. Use one field only');
@@ -60,14 +61,16 @@ export default function IconInput({size,error,onChange,label,value,setValue,disp
 
                 </View>
 
-             <TextInput {...props} value={value} keyboardType="number-pad" maxLength={10}   onChangeText={(text)=>{ 
+             <TextInput {...props} value={value}     onChangeText={(text)=>{ 
 
                 
                     
                onChangeHandler(text)
             }} className={[
         `border-2  rounded-md  py-4 px-12 text-lg ${error ==="" ?"border-secondry-300 ":"border-danger-400 bg-danger-100 "} `,
-        " pl-15"
+        " pl-13",
+        `${className}`
+
       ].join(" ")} />
 
 

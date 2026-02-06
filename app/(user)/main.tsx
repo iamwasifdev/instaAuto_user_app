@@ -61,7 +61,7 @@ console.log("Route: ",route)
 
         <View className="absolute z-50 top-0 left-0 justify-center items-center ml-4" >
 
-          <Pressable onPress={()=>{router.replace("/(user)/stopSearch")}} className="active:opacity-20">
+          <Pressable onPress={()=>{router.replace("/(user)/StopSearch")}} className="active:opacity-20">
             <View className="p-1 border-2 rounded-md ">
                <Search size={28}/>
             </View>

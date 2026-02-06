@@ -32,7 +32,7 @@ function TabLayout() {
         <Tabs.Screen name="main" options={{
           tabBarIcon: ({ color }) => <Home color={color} size={24} />,
         }} />
-        <Tabs.Screen name="stopSearch"/>
+        <Tabs.Screen name="StopSearch"/>
       </Tabs.Protected>
       <Tabs.Protected guard={!geoStatus}> 
         <Tabs.Screen name="LocationAccessDenied"  />
