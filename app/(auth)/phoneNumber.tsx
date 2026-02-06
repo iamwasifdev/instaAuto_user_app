@@ -1,7 +1,7 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
-import PhoneInput from "@/components/ui/countryPhoneNumberInput";
+
 import { useState } from "react";
 
 import "../global.css";
@@ -17,6 +17,7 @@ import flattenErrorCustom from "@/utils/flattenErrorCustom";
 import objStr from "@/utils/objStr";
 import { isAxiosError } from "axios";
 import { router } from "expo-router";
+import IconInput from "@/components/ui/IconInput";
 
 
 
@@ -99,13 +100,14 @@ export default function PhoneNumber() {
 
   return (
     <SafeAreaView className=" h-full  flex-col justify-center items-center gap-5 ">
-      <PhoneInput
+      <IconInput
         label="Phone Number"
         placeholder="Enter your Phone Number"
         error={inputError}
         size="md"
         setValue={setNumber}
         value={number}
+        displayText="+91"
       />
       
 

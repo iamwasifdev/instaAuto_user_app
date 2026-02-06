@@ -1,3 +1,4 @@
+import { LucideIcon } from 'lucide-react-native';
 import { Text, TextInput, View, type TextInputProps } from 'react-native'
 
 
@@ -10,6 +11,8 @@ interface InputType  extends TextInputProps{
     error:string,
     setValue: React.Dispatch<React.SetStateAction<string>>,
     value:string,
+    DisplayIcon?:LucideIcon//The D is capital because if we do not write this than the react will  not know that it is a component okdoki.
+    displayText?:string
 
 
 }
@@ -24,7 +27,11 @@ const sizeStyle={
 
 
 
-export default function PhoneInput({size,error,onChange,label,value,setValue,...props}:InputType){
+export default function IconInput({size,error,onChange,label,value,setValue,displayText,DisplayIcon,...props}:InputType){
+
+      if (displayText && DisplayIcon) {
+    console.warn('IconInput: Cannot use both displayText and DisplayIcon. Use one field only');
+  }
 
     function onChangeHandler(text:string){
 
@@ -47,7 +54,10 @@ export default function PhoneInput({size,error,onChange,label,value,setValue,...
         <View className='relative'>
 
             <View className=' p-1 absolute flex left-0 justify-center  inset-y-0 '>
-                <Text className=' text-xl '>+91</Text>
+                
+                {displayText && <Text>{displayText}</Text>}
+                {DisplayIcon && <DisplayIcon/>}
+
                 </View>
 
              <TextInput {...props} value={value} keyboardType="number-pad" maxLength={10}   onChangeText={(text)=>{ 

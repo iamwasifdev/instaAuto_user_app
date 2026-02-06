@@ -2,6 +2,7 @@
 import { Tabs } from "expo-router";
 import GeoLocationProvider, { useGeoLocation } from "@/context/geoLocationContext";
 import { DataContextProvider } from "@/context/dataContext";
+import { Home } from "lucide-react-native";
 
 
 export default function TabRootLayout() {
@@ -23,11 +24,15 @@ function TabLayout() {
   return (
     <Tabs screenOptions={{
         headerShown: false, // ← This removes header from ALL tabs
+        
       }}>
 
         
       <Tabs.Protected guard={geoStatus}> 
-        <Tabs.Screen name="main"  />
+        <Tabs.Screen name="main" options={{
+          tabBarIcon: ({ color }) => <Home color={color} size={24} />,
+        }} />
+        <Tabs.Screen name="stopSearch"/>
       </Tabs.Protected>
       <Tabs.Protected guard={!geoStatus}> 
         <Tabs.Screen name="LocationAccessDenied"  />

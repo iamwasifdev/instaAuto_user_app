@@ -2,6 +2,8 @@ import WebSocketService from "@/class/WebSocketService";
 import Map from "@/components/ui/Map";
 import { useAuth } from "@/context/authContext";
 
+
+
 import getLocation from "@/utils/getLocation";
 
 import { useEffect,  useRef, } from "react";
@@ -11,11 +13,13 @@ import ErrorBox from "@/components/ui/errorBox";
 
 
 
-import {  View } from "react-native";
+import {  Pressable, View } from "react-native";
 
 import { useGeoLocation } from "@/context/geoLocationContext";
 import { useDataContext } from "@/context/dataContext";
 import useDriverMarkerOnClick from "@/hooks/useDriverMarkerOnClick";
+import { Search } from "lucide-react-native";
+import { router } from "expo-router";
 
 export default function Home() {
   const MapRef = useRef<MapView>(null);
@@ -53,6 +57,16 @@ console.log("Route: ",route)
         <View className="absolute z-50 bottom-0 right-0 left-0 justify-center items-center  ">
           {/* this about a new way to do this */}
            <ErrorBox text={[error,routeError].join(error && routeError?"\n":"")}/>
+        </View>
+
+        <View className="absolute z-50 top-0 left-0 justify-center items-center ml-4" >
+
+          <Pressable onPress={()=>{router.replace("/(user)/stopSearch")}} className="active:opacity-20">
+            <View className="p-1 border-2 rounded-md ">
+               <Search size={28}/>
+            </View>
+          </Pressable>
+
         </View>
         
         
