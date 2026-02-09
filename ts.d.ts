@@ -98,5 +98,10 @@ export type lngLatType={
     longitude:number
 }
 
+export type ListData={
+    name:string,
+    id:string
+}
+
 export type  MarkerType=DriverType
 

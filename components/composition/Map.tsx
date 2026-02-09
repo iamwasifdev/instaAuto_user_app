@@ -1,12 +1,12 @@
 import { driverMarker, routeType } from "@/ts";
 import getCoordinates from "@/utils/getCoordinates";
+import { MapPin } from "lucide-react-native";
 import { useMemo } from "react";
 import { View } from "react-native";
 import MapView, { type MapViewProps } from "react-native-maps";
-import AnimatedMarker from "./AnimatedMarker";
-import IconMarker from "./IconMarker";
-import Route from "./Route";
-import { MapPin } from "lucide-react-native";
+import AnimatedMarker from "../ui/AnimatedMarker";
+import IconMarker from "../ui/IconMarker";
+import Route from "../ui/Route";
 
 interface MapType extends MapViewProps {
   markers: driverMarker[];
@@ -25,7 +25,7 @@ export default function Map({
     if (!route) {
       return undefined;
     }
-    console.log("\n \n \n inside use memo", route);
+
     return getCoordinates(route);
   }, [route]);
 
@@ -62,7 +62,6 @@ export default function Map({
                   lat={stop.latitude}
                   LucideIcon={MapPin}
                   text={stop.name}
-                 
                 />
               );
             })}
