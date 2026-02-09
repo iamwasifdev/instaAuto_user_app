@@ -12,6 +12,8 @@ export default function StopSearch(){
 
     const [searchState,setSearchState]=useState("")
 
+    
+
     return <SafeAreaView  className="pl-4">
 
         

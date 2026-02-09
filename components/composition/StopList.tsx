@@ -28,16 +28,19 @@ export default function StopList({onStopClick}:{onStopClick:(stopName:string,id:
                   DisplayIcon={Search}
                 
                 />
-              
+                {
+                    searchState.length >2 ?
                <View className="pr-4 pt-2 border-t-2 border-gray-500">
 
                  <List onClick={(data)=>{onStopClick(data.name,data.id)}} data={[{
-                    name:"Hellobhj",
+                    name:"Hello",
                     id:"uguujji"
                 }]} Icon={MapPin} />
 
                </View>
-              
+               :
+               null
+               }
                
    </View> 
 }

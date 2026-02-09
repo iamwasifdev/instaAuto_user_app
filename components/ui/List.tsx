@@ -26,7 +26,7 @@ export default function List({
           }}
         >
            <IconDisplay
-            className={"border-gray-300 text-gray-400 "}
+            className={"border-gray-300 text-gray-400 active:border-gray-600  "}
             iconColor={"#9ca3af"}
             size={tabSize}
             value={item.name}
