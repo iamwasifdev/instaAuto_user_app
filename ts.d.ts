@@ -1,3 +1,4 @@
+import { boolean, success } from "zod"
 
 
 
@@ -73,6 +74,7 @@ export type driveMovedType={
 
 export type stopType= {
   name: string;
+  _id:string
   // Updated Interface to match GeoJSON
   location: {
     type: string;
@@ -101,6 +103,13 @@ export type lngLatType={
 export type ListData={
     name:string,
     id:string
+}
+
+export  type ResponseCus<K extends string,T>= {
+    success:boolean
+  
+}&{
+      [P in K]:T
 }
 
 export type  MarkerType=DriverType

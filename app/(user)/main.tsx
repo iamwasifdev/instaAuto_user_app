@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import MapView from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { Pressable, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 
 import { useDataContext } from "@/context/dataContext";
 import { useGeoLocation } from "@/context/geoLocationContext";
@@ -17,7 +17,7 @@ export default function Home() {
   const MapRef = useRef<MapView>(null);
 
   const { location } = useGeoLocation();
-  const { error, filteredDrivers } = useDataContext();
+  const { error, filteredDrivers,phase } = useDataContext();
   const {
     route,
     error: routeError,
@@ -35,25 +35,29 @@ export default function Home() {
         longitude: location.coords.longitude,
         latitudeDelta: 0.01, // How much map shows vertically
         longitudeDelta: 0.011,
-      },
+      },  
       1500,
     );
-  }, []);
+  }, [location]);//Remember it will keep runig this animation whenever loction change
 
   console.log("Route: ", route);
 
   return (
     <SafeAreaView className="h-full  flex-1">
       <View className="h-full w-full relative">
-        <View className="absolute z-50 bottom-0 right-0 left-0 justify-center items-center  ">
+        <View className="absolute z-50 bottom-0 right-0 left-0 flex-row items-center   bg-red-600 ">
           {/* this about a new way to do this */}
+          <Text>hello</Text>
+        <View className="flex-row self-center justify-center  items-center bg-green-500">
           <ErrorBox
-            text={[error, routeError].join(error && routeError ? "\n" : "")}
+            text={[error, routeError,"hello"].join(error && routeError ? "\n" : "")}
           />
+        </View>
         </View>
 
         <View className="absolute z-50 top-0 left-0 justify-center items-center ml-4">
-          <Pressable
+         {phase ==="IDLE" &&
+         <Pressable
             onPress={() => {
               router.replace("/(user)/StopSearch");
             }}
@@ -63,7 +67,10 @@ export default function Home() {
               <Search size={28} />
             </View>
           </Pressable>
-        </View>
+         
+         }       
+         
+          </View>
 
         <Map
           zoomTapEnabled={false}
