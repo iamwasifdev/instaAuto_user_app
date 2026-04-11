@@ -105,6 +105,9 @@ export type ListData={
     id:string
 }
 
+export type routeIdDictionary=Record<string,boolean>
+
+
 export  type ResponseCus<K extends string,T>= {
     success:boolean
   

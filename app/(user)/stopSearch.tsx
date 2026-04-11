@@ -8,17 +8,14 @@ import { useDataContext } from "@/context/dataContext";
 import { stopType } from "@/ts";
 import { router } from "expo-router";
 import { Pin } from "lucide-react-native";
-
 export default function StopSearch() {
   const { setSelectedStop, setPhase } = useDataContext();
-
   function onStopClick(stop: stopType) {
     setSelectedStop(stop);
     setPhase("NOTCONFIRMED");
     router.push("/(user)/main");
-    console.log("Gave me the stop : ",stop)
+    console.log("Gave me the stop : ", stop);
   }
-
   return (
     <SafeAreaView className="pl-4">
       <IconDisplay

@@ -15,7 +15,6 @@ class WebSocketService{
            const newSocket=io(this.url)
            newSocket.emit("join")
            newSocket.on("driver_moved",()=>{
-            console.log("driver  moved")
            })
         this.Socket=newSocket
 
@@ -45,7 +44,6 @@ class WebSocketService{
        })
      
     }
-//ghjkl
     on<K>(event:string,func:(data:K)=>void){
 
        if(!this.Socket){
@@ -129,7 +127,7 @@ class WebSocketService{
         
 
  if(i>tries-1){
-    console.log("fck")
+    console.log("Tried but could not connect")
         onFailure()
         return;
        }

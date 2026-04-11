@@ -4,10 +4,13 @@ import flattenErrorCustom from "./flattenErrorCustom";
 import objStr from "./objStr";
 
 
+export default function gotError(rawError:unknown,mode:"str"):{type:string,error:string}
+export default function gotError(rawError:unknown,mode:"obj"):{type:string,error:Record<string,string>|string}
 
 export default function gotError(rawError: unknown, mode: "str" | "obj") {
 
   if (!isAxiosError(rawError)) {
+   
     return ({
       type: "unexpected",
       error: "Something went wrong"

@@ -7,8 +7,10 @@
     "icon": "./assets/images/icon.png",
     "scheme": "instaauto",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -19,7 +21,6 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
     "web": {
@@ -48,7 +49,9 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow instaAuto to use your location for finding nearby rides."
         }
-      ]
+      ],
+      "expo-image",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,

@@ -3,7 +3,8 @@ import { routeType,lngLatType } from "@/ts";
 export type extractedStopType={
   latitude:number,
   longitude:number,
-  name:string
+  name:string,
+  id:string
 }
 
 export default function getCoordinates(route:routeType){
@@ -14,7 +15,7 @@ export default function getCoordinates(route:routeType){
 
   route.stops.forEach((stop)=>{
     coordinates.push({longitude:stop.location.coordinates[0],latitude:stop.location.coordinates[1]})
-    stopsGiven.push({longitude:stop.location.coordinates[0],latitude:stop.location.coordinates[1],name:stop.name})
+    stopsGiven.push({longitude:stop.location.coordinates[0],latitude:stop.location.coordinates[1],name:stop.name,id:stop._id})
   })
 
   return{stopsGiven,coordinates}
