@@ -104,8 +104,10 @@ export default function Map({
             }}
             title="Your Destination"
             description={`${selectedStop.name}`}
-          
+           
           >
+            <Callout> <Text>This is not your destination</Text>
+            </Callout>
             <Pin />
           </Marker>
         ) : null}
